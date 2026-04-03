@@ -345,8 +345,6 @@ class SerenaMCPFactory:
             yield
         finally:
             log.info("MCP server shutting down")
-            if self.agent is not None:
-                self.agent.shutdown()
 
     def _get_initial_instructions(self) -> str:
         assert self.agent is not None

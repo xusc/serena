@@ -299,7 +299,11 @@ class TopLevelCommands(AutoRegisteringGroup):
                 project_file,
             )
         log.info("Starting MCP server …")
-        server.run(transport=transport)
+        try:
+            server.run(transport=transport)
+        finally:
+            if factory.agent is not None:
+                factory.agent.shutdown()
 
     @staticmethod
     @click.command(
